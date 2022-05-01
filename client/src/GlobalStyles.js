@@ -26,8 +26,14 @@ body{
     margin: 0 auto;
     padding: 0;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-    color: var(--color-white);
-    background-color: var(--color-black);
+    color: var(--color-green);
+    background-color: var(--color-light-gray);
+    text-align: center;
+}
+
+h1{
+    margin: 1rem;
+    font-style: italic;
 }
 
 input, label, textarea{
