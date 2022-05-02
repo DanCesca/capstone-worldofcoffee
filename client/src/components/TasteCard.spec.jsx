@@ -14,7 +14,7 @@ describe('TasteCard', () => {
     render(<TasteCard taste={taste}></TasteCard>);
     const name = screen.getByRole('heading');
     const image = screen.getByRole('img');
-    const profile = screen.getByText(/fruity/i);
+    const profile = screen.getByText(/Coffees with this roast present light and fresh flavours. Nuances of berries, fruits and citrus. The taste varies from citrusy to fruity and sweet./i);
 
     expect(name).toBeInTheDocument();
     expect(image).toBeInTheDocument();

@@ -12,7 +12,7 @@ export const tastes = [
     name: 'Medium Roast',
     image: require('./images/medium-roast.jpg'),
     profile:
-      'Medium roasted coffees share qualities of low acidity and soft and rich flavours. Flavour nuances vary between nutty and milk-chocolaty to brown sugar and ripe fruits.',
+      'These coffees share qualities of low acidity and soft and rich flavours. Flavour nuances vary between nutty and milk-chocolaty to brown sugar and ripe fruits.',
   },
 
   {
@@ -20,6 +20,6 @@ export const tastes = [
     name: 'Dark Roast',
     image: require('./images/dark-roast.jpg'),
     profile:
-      'Dark chocolate, caramel and soft roastiness. All coffees with dark roast are bold and full-bodied. Typical roasty flavours are dark chocolate, nuts and dark caramel.',
+      'Dark chocolate, caramel and soft roastiness. All coffees with this kind of roast are bold and full-bodied. Typical roasty flavours are dark chocolate, nuts and dark caramel.',
   },
 ];
