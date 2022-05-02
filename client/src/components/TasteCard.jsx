@@ -12,7 +12,7 @@ function TasteCard({ taste }) {
 
 export default TasteCard;
 
-const CardContainer = styled.article`
+const CardContainer = styled.li`
   padding: 1.5rem;
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);

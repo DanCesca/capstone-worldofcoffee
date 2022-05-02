@@ -7,8 +7,8 @@ function App() {
     <AppContainer>
       <h1>Coffee Roast Levels</h1>
       <CardWrapper>
-        {tastes.map((taste, id) => (
-          <TasteCard key={id} taste={taste} />
+        {tastes.map(taste => (
+          <TasteCard key={taste.id} taste={taste} />
         ))}
       </CardWrapper>
     </AppContainer>
