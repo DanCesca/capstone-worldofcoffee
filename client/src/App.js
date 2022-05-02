@@ -7,8 +7,8 @@ function App() {
     <AppContainer>
       <h1>Coffee Roast Levels</h1>
       <CardWrapper>
-        {tastes.map(taste => (
-          <TasteCard taste={taste} />
+        {tastes.map((taste, id) => (
+          <TasteCard key={id} taste={taste} />
         ))}
       </CardWrapper>
     </AppContainer>
@@ -24,7 +24,7 @@ const AppContainer = styled.main`
   align-items: center;
 `;
 
-const CardWrapper = styled.section`
+const CardWrapper = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
