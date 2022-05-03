@@ -5,21 +5,20 @@ const taste = {
   id: '1',
   name: 'Light Roast',
   image: 'light-roast.jpg',
-  profile:
-    'Coffees with this roast present light and fresh flavours. Nuances of berries, fruits and citrus. The taste varies from citrusy to fruity and sweet.',
+  teaser: 'You will like this, if you enjoy fruity flavours and a striking acidity.',
 };
 
 describe('TasteCard', () => {
-  it('renders an article with an image, a title and a profile description', () => {
+  it('renders an article with an image, a title and a teaser', () => {
     render(<TasteCard taste={taste}></TasteCard>);
     const name = screen.getByText(/Light Roast/i);
     const image = screen.getByAltText(/Light Roast/i);
-    const profile = screen.getByText(
-      /Coffees with this roast present light and fresh flavours. Nuances of berries, fruits and citrus. The taste varies from citrusy to fruity and sweet./i
+    const teaser = screen.getByText(
+      /You will like this, if you enjoy fruity flavours and a striking acidity./i
     );
 
     expect(name).toBeInTheDocument();
     expect(image).toBeInTheDocument();
-    expect(profile).toBeInTheDocument();
+    expect(teaser).toBeInTheDocument();
   });
 });

@@ -1,12 +1,29 @@
 import styled from 'styled-components';
+import SelectButton from './SelectButton';
+import { useState } from 'react';
 
 function TasteCard({ taste }) {
+  const [isSelected, setIsSelected] = useState(false);
+
   return (
-    <CardContainer>
-      <img src={taste.image} alt={taste.name} />
-      <h2>{taste.name}</h2>
-      <p>{taste.profile}</p>
-    </CardContainer>
+    <>
+      {isSelected ? (
+        <CardContainer>
+          <img src={taste.image} alt={taste.name} />
+          <h2>{taste.name}</h2>
+          <p>{taste.profile}</p>
+          <p>Your coffee journey could start with:</p>
+          <SelectButton onClick={() => setIsSelected(false)}>Close</SelectButton>
+        </CardContainer>
+      ) : (
+        <CardContainer>
+          <img src={taste.image} alt={taste.name} />
+          <h2>{taste.name}</h2>
+          <p>{taste.teaser}</p>
+          <SelectButton onClick={() => setIsSelected(true)}>Select</SelectButton>
+        </CardContainer>
+      )}
+    </>
   );
 }
 

@@ -6,7 +6,7 @@ function App() {
   return (
     <AppContainer>
       <h1>Coffee Roast Levels</h1>
-      <CardWrapper>
+      <CardWrapper role="list">
         {tastes.map(taste => (
           <TasteCard key={taste.id} taste={taste} />
         ))}
