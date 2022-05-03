@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import SelectButton from './SelectButton';
 import { useState } from 'react';
+import { ReactComponent as CloseButton } from '../icons/close.svg';
 
 function TasteCard({ taste }) {
   const [isSelected, setIsSelected] = useState(false);
@@ -9,18 +10,25 @@ function TasteCard({ taste }) {
     <>
       {isSelected ? (
         <CardContainer>
-          <img src={taste.image} alt={taste.name} />
+          <TasteImage src={taste.image} alt={taste.name} />
           <h2>{taste.name}</h2>
           <p>{taste.profile}</p>
           <p>Your coffee journey could start with:</p>
-          <SelectButton onClick={() => setIsSelected(false)}>Close</SelectButton>
+          <SampleImage src={taste.sample.image} alt={taste.sample.name} />
+          <SampleText>
+            {taste.sample.name}: {taste.sample.flavors}
+          </SampleText>
+          <CloseButton
+            style={{ width: '30px', fill: '#ff501c' }}
+            onClick={() => setIsSelected(false)}
+          ></CloseButton>
         </CardContainer>
       ) : (
         <CardContainer>
-          <img src={taste.image} alt={taste.name} />
+          <TasteImage src={taste.image} alt={taste.name} />
           <h2>{taste.name}</h2>
           <p>{taste.teaser}</p>
-          <SelectButton onClick={() => setIsSelected(true)}>Select</SelectButton>
+          <SelectButton onClick={() => setIsSelected(true)}>Read more</SelectButton>
         </CardContainer>
       )}
     </>
@@ -42,12 +50,22 @@ const CardContainer = styled.li`
     padding: 1rem;
   }
 
-  img {
-    width: 75%;
-  }
-
   h2 {
     font-style: italic;
     padding: 1rem;
   }
+`;
+
+const SampleText = styled.p`
+  font-size: 0.85em;
+  font-weight: bold;
+`;
+
+const TasteImage = styled.img`
+  width: 75%;
+`;
+
+const SampleImage = styled.img`
+  width: 30%;
+  border: 1px solid #084d2c;
 `;
