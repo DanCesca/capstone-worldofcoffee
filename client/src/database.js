@@ -51,7 +51,7 @@ export const tastes = [
       flavors: 'Dark Chocolate, Nuts',
       roast: 'Dark',
       description:
-        'Brazil Santos is a blend of the arabica varieties Mundo Novo, icatu and Acaia. The result of this dark roast is a super soft roastiness with hints of dark chocolate and nuts.',
+        'Brazil Santos is a great blend of the arabica varieties Mundo Novo, icatu and Acaia. The result of this dark roast is a super soft roastiness with hints of dark chocolate and nuts.',
       price: '10,90 €',
     },
   },
