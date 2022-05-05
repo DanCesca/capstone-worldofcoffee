@@ -34,6 +34,7 @@ body{
 h1{
     margin: 1rem;
     font-style: italic;
+    font-size: 1.5em;
 }
 
 input, label, textarea{
