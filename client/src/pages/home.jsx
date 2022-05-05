@@ -1,6 +1,7 @@
 import TasteCard from '../components/TasteCard';
 import { tastes } from '../database';
 import Header from '../components/Header';
+import NavBar from '../components/NavBar';
 import styled from 'styled-components';
 
 function Home() {
@@ -13,6 +14,7 @@ function Home() {
           <TasteCard key={taste.id} taste={taste} />
         ))}
       </CardWrapper>
+      <NavBar />
     </>
   );
 }
