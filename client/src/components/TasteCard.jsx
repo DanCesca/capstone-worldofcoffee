@@ -18,10 +18,7 @@ function TasteCard({ taste }) {
           <SampleText>
             {taste.sample.name}: {taste.sample.flavors}
           </SampleText>
-          <CloseButton
-            style={{ width: '30px', fill: '#ff501c' }}
-            onClick={() => setIsSelected(false)}
-          ></CloseButton>
+          <CloseButton style={{ width: '30px' }} onClick={() => setIsSelected(false)}></CloseButton>
         </CardContainer>
       ) : (
         <CardContainer>
