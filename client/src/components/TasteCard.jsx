@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import SelectButton from './SelectButton';
 import { useState } from 'react';
 import { ReactComponent as CloseButton } from '../icons/close.svg';
+import { Link } from 'react-router-dom';
 
 function TasteCard({ taste }) {
   const [isSelected, setIsSelected] = useState(false);
@@ -18,6 +19,9 @@ function TasteCard({ taste }) {
           <SampleText>
             {taste.sample.name}: {taste.sample.flavors}
           </SampleText>
+          <StyledLink to={`/product/${taste.id}`}>
+            <SelectButton>Select</SelectButton>
+          </StyledLink>
           <CloseButton style={{ width: '30px' }} onClick={() => setIsSelected(false)}></CloseButton>
         </CardContainer>
       ) : (
@@ -65,4 +69,12 @@ const TasteImage = styled.img`
 const SampleImage = styled.img`
   width: 30%;
   border: 1px solid #084d2c;
+`;
+
+const StyledLink = styled(Link)`
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: inherit;
+  text-decoration: none;
+  display:block;
 `;
