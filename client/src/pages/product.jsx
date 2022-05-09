@@ -22,6 +22,7 @@ function Product({ tastes }) {
           <ProductFlavors>{taste.sample.flavors}</ProductFlavors>
           <ProductPromise>Why You'll Love it</ProductPromise>
           <ProductDescription>{taste.sample.description}</ProductDescription>
+          <ProductPrice>Price (250g): {taste.sample.price}</ProductPrice>
         </ProductCard>
       </ProductWrapper>
       <NavBar />
@@ -46,11 +47,10 @@ const ProductWrapper = styled.ul`
 
 const ProductCard = styled.li`
   display: grid;
-  gap: 5px;
+  
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: repeat(7, 1fr);
   padding: 0.8rem;
-  border-bottom: 2px solid var(--color-black);
 `;
 
 const ProductPic = styled.img`
@@ -78,16 +78,23 @@ const ProductFlavors = styled.p`
 const ProductPromise = styled.p`
   grid-column: 1/3;
   grid-row: 3/4;
-  justify-self: start;
   font-weight: bold;
   font-size: 1.3rem;
   margin-top: 1rem;
-  border: 2px solid red;
+  margin-bottom: 1rem;
+  align-self: end;
 `;
 
 const ProductDescription = styled.p`
   grid-column: 1/3;
   grid-row: 4/6;
   align-self: start;
-  border: 2px solid red;
+`;
+
+const ProductPrice = styled.p`
+grid-column: 1/3;
+grid-row: 5/6;
+align-self: start;
+font-weight: bold;
+padding: 1rem;
 `;
