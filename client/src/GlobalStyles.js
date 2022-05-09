@@ -22,7 +22,7 @@ export default createGlobalStyle`
 
 body{
     max-width: 768px;
-    height: 100vh;
+    
     margin: 0 auto;
     padding: 0;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;

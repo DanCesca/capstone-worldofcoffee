@@ -6,7 +6,7 @@ import styled from 'styled-components';
 function Home( {tastes} ) {
   return (
     <>
-      <Header />
+      <Header title="World of Coffee"/>
       <PageTitle>Coffee Roast Levels</PageTitle>
       <CardWrapper role="list">
         {tastes.map(taste => (

@@ -22,6 +22,6 @@ const AppContainer = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 6rem;
-  margin-bottom: 8rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 `;

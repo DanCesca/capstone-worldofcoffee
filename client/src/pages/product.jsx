@@ -9,21 +9,25 @@ function Product({ tastes }) {
 
   return (
     <>
-      <Header />
+      <Header hasBackButton="true" />
       <PageTitle>
         Your Coffee Journey
         <br />
         Starts Here
       </PageTitle>
       <ProductWrapper role="list">
-        <ProductCard>
-          <ProductPic src={taste.sample.image} alt={taste.sample.name} />
-          <ProductName>{taste.sample.name}</ProductName>
-          <ProductFlavors>{taste.sample.flavors}</ProductFlavors>
-          <ProductPromise>Why You'll Love it</ProductPromise>
-          <ProductDescription>{taste.sample.description}</ProductDescription>
-          <ProductPrice>Price (250g): {taste.sample.price}</ProductPrice>
-        </ProductCard>
+        {taste ? (
+          <ProductCard>
+            <ProductPic src={taste.sample.image} alt={taste.sample.name} />
+            <ProductName>{taste.sample.name}</ProductName>
+            <ProductFlavors>{taste.sample.flavors}</ProductFlavors>
+            <ProductPromise>Why You'll Love it</ProductPromise>
+            <ProductDescription>{taste.sample.description}</ProductDescription>
+            <ProductPrice>Price (250g): {taste.sample.price}</ProductPrice>
+          </ProductCard>
+        ) : (
+          <p>Sorry, nothing found. Please select another coffee.</p>
+        )}
       </ProductWrapper>
       <NavBar />
     </>
@@ -47,7 +51,7 @@ const ProductWrapper = styled.ul`
 
 const ProductCard = styled.li`
   display: grid;
-  
+
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(7, 1fr);
   padding: 0.8rem;
@@ -92,9 +96,9 @@ const ProductDescription = styled.p`
 `;
 
 const ProductPrice = styled.p`
-grid-column: 1/3;
-grid-row: 5/6;
-align-self: start;
-font-weight: bold;
-padding: 1rem;
+  grid-column: 1/3;
+  grid-row: 5/6;
+  align-self: start;
+  font-weight: bold;
+  padding: 1rem;
 `;
