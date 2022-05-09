@@ -10,31 +10,32 @@ function Product({ tastes }) {
   return (
     <>
       <Header hasBackButton="true" />
-        {taste ? (
-          <>
+      {taste ? (
+        <>
           <PageTitle>
-          Your Coffee Journey
-          <br />
-          Starts Here
-        </PageTitle>
+            Your Coffee Journey
+            <br />
+            Starts Here
+          </PageTitle>
           <ProductWrapper role="list">
-          <ProductCard>
-            <ProductPic src={taste.sample.image} alt={taste.sample.name} />
-            <ProductName>{taste.sample.name}</ProductName>
-            <ProductFlavors>{taste.sample.flavors}</ProductFlavors>
-            <ProductPromise>Why You'll Love it</ProductPromise>
-            <ProductDescription>{taste.sample.description}</ProductDescription>
-            <ProductPrice>Price (250g): {taste.sample.price}</ProductPrice>
-          </ProductCard>
+            <ProductCard>
+              <ProductPic src={taste.sample.image} alt={taste.sample.name} />
+              <ProductName>{taste.sample.name}</ProductName>
+              <ProductFlavors>{taste.sample.flavors}</ProductFlavors>
+              <ProductPromise>Why You'll Love it</ProductPromise>
+              <ProductDescription>{taste.sample.description}</ProductDescription>
+              <ProductPrice>Price (250g): {taste.sample.price}</ProductPrice>
+            </ProductCard>
           </ProductWrapper>
-          </>
-        ) : (
-          <>
-            <ErrorImage src={require("../images/cups.jpg")} alt="empty cup" />
-            <ErrorMessage>Sorry, nothing found. <br/> Please select another coffee.</ErrorMessage>
-          </>
-        )}
-      
+        </>
+      ) : (
+        <>
+          <ErrorImage src={require('../images/cups.jpg')} alt="empty cup" />
+          <ErrorMessage>
+            Sorry, nothing found. <br /> Please select another coffee.
+          </ErrorMessage>
+        </>
+      )}
       <NavBar />
     </>
   );
@@ -117,5 +118,5 @@ const ErrorImage = styled.img`
 `;
 
 const ErrorMessage = styled.p`
-padding: 1rem;
+  padding: 1rem;
 `;
