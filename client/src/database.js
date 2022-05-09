@@ -34,7 +34,7 @@ export const tastes = [
       description:
         'Peru Tunki is a medium roasted coffee with a rich mouthfeel and nuances of red berries, nuts and chocolate. The coffee comes from Puno in southern Peru from the Cecovasa cooperative, founded by a group of female farmers.',
       price: '12,90 €',
-    },
+    }
   },
 
   {

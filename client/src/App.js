@@ -1,12 +1,15 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/home';
+import Product from './pages/product';
 import styled from 'styled-components';
+import { tastes } from './database.js';
 
 function App() {
   return (
     <AppContainer>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home tastes={tastes} />} />
+        <Route path="/product/:id" element={<Product tastes={tastes} />} />
       </Routes>
     </AppContainer>
   );
@@ -19,6 +22,6 @@ const AppContainer = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 6rem;
-  margin-bottom: 8rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 `;

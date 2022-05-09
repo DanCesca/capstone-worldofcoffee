@@ -1,13 +1,12 @@
 import TasteCard from '../components/TasteCard';
-import { tastes } from '../database';
 import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import styled from 'styled-components';
 
-function Home() {
+function Home( {tastes} ) {
   return (
     <>
-      <Header />
+      <Header title="World of Coffee"/>
       <PageTitle>Coffee Roast Levels</PageTitle>
       <CardWrapper role="list">
         {tastes.map(taste => (
