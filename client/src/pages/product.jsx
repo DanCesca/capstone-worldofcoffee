@@ -10,13 +10,14 @@ function Product({ tastes }) {
   return (
     <>
       <Header hasBackButton="true" />
-      <PageTitle>
-        Your Coffee Journey
-        <br />
-        Starts Here
-      </PageTitle>
-      <ProductWrapper role="list">
         {taste ? (
+          <>
+          <PageTitle>
+          Your Coffee Journey
+          <br />
+          Starts Here
+        </PageTitle>
+          <ProductWrapper role="list">
           <ProductCard>
             <ProductPic src={taste.sample.image} alt={taste.sample.name} />
             <ProductName>{taste.sample.name}</ProductName>
@@ -25,10 +26,15 @@ function Product({ tastes }) {
             <ProductDescription>{taste.sample.description}</ProductDescription>
             <ProductPrice>Price (250g): {taste.sample.price}</ProductPrice>
           </ProductCard>
+          </ProductWrapper>
+          </>
         ) : (
-          <p>Sorry, nothing found. Please select another coffee.</p>
+          <>
+            <ErrorImage src={require("../images/cups.jpg")} alt="empty cup" />
+            <ErrorMessage>Sorry, nothing found. <br/> Please select another coffee.</ErrorMessage>
+          </>
         )}
-      </ProductWrapper>
+      
       <NavBar />
     </>
   );
@@ -101,4 +107,15 @@ const ProductPrice = styled.p`
   align-self: start;
   font-weight: bold;
   padding: 1rem;
+`;
+
+const ErrorImage = styled.img`
+  width: 50%;
+  border: 1px solid #084d2c;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+`;
+
+const ErrorMessage = styled.p`
+padding: 1rem;
 `;
