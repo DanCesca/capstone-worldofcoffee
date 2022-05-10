@@ -6,16 +6,38 @@ export const tastes = [
     teaser: 'You will like this, if you enjoy fruity flavours and a striking acidity.',
     profile:
       'Coffees with this roast present light and fresh flavours. Nuances of berries, fruits and citrus. The taste varies from citrusy to fruity and sweet.',
-    sample: {
-      id: '1',
-      name: 'El Amanecer',
-      image: require('./images/sample-light.jpg'),
-      flavors: 'Orange, Green Apple, Cherry',
-      roast: 'Light',
-      description:
-        'Our most popular light roasted coffee! The flavor of this coffee is mild and easily approachable. Its fullness hides flavors of orange, green apple and cherry with a discreet acidity.',
-      price: '10,40 €',
-    },
+    sample: [
+      {
+        id: '1',
+        name: 'El Amanecer',
+        image: require('./images/sample-light.jpg'),
+        flavors: 'Orange, Green Apple, Cherry',
+        roast: 'Light',
+        description:
+          'Our most popular light roasted coffee! The flavor of this coffee is mild and easily approachable. Its fullness hides flavors of orange, green apple and cherry with a discreet acidity.',
+        price: '10,40 €',
+      },
+      {
+        id: '2',
+        name: 'Guji Light',
+        image: require('./images/sample-light.jpg'),
+        flavors: 'Honey, Lime, Jasmine',
+        roast: 'Light',
+        description:
+          'Guji Light is a sweet and fruity coffee from the Gabicho Rogicha region in Ethiopia. The flavor is pure, bright and rich with tastes of honey, lime and jasmine.',
+        price: '10,40 €',
+      },
+      {
+        id: '3',
+        name: 'Holmen Hint',
+        image: require('./images/sample-light.jpg'),
+        flavors: 'Caramel, Citrus, Bergamot',
+        roast: 'Light',
+        description:
+          'A blend of Sidamo rich and sweet beans, bringing out a complex flavor and flowery aroma, and Guatemalan beans, which give this blend its unique flavor of caramel.',
+        price: '10,90 €',
+      },
+    ],
   },
 
   {
@@ -34,7 +56,7 @@ export const tastes = [
       description:
         'Peru Tunki is a medium roasted coffee with a rich mouthfeel and nuances of red berries, nuts and chocolate. The coffee comes from Puno in southern Peru from the Cecovasa cooperative, founded by a group of female farmers.',
       price: '12,90 €',
-    }
+    },
   },
 
   {

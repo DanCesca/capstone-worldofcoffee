@@ -15,11 +15,11 @@ function TasteCard({ taste }) {
           <h2>{taste.name}</h2>
           <p>{taste.profile}</p>
           <p>Your coffee journey could start with:</p>
-          <SampleImage src={taste.sample.image} alt={taste.sample.name} />
+          <SampleImage src={taste.sample[0].image} alt={taste.sample[0].name} />
           <SampleText>
-            {taste.sample.name}: {taste.sample.flavors}
+            {taste.sample[0].name}: {taste.sample[0].flavors}
           </SampleText>
-          <StyledLink to={`/product/${taste.id}`}>
+          <StyledLink to={`/product/${taste.id}/${taste.sample[0].id}`}>
             <SelectButton>Select</SelectButton>
           </StyledLink>
           <CloseButton style={{ width: '30px' }} onClick={() => setIsSelected(false)}></CloseButton>

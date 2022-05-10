@@ -4,13 +4,16 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 
 function Product({ tastes }) {
-  const { id } = useParams();
+  const { id, sampleId } = useParams();
   const taste = tastes.find(taste => taste.id === id);
+  console.log(taste);
+  const tasteSample = taste.sample.find(sample => sample.id === sampleId);
+  console.log(tasteSample);
 
   return (
     <>
       <Header hasBackButton="true" />
-      {taste ? (
+      {taste && tasteSample ? (
         <>
           <PageTitle>
             Your Coffee Journey
@@ -19,12 +22,12 @@ function Product({ tastes }) {
           </PageTitle>
           <ProductWrapper role="list">
             <ProductCard>
-              <ProductPic src={taste.sample.image} alt={taste.sample.name} />
-              <ProductName>{taste.sample.name}</ProductName>
-              <ProductFlavors>{taste.sample.flavors}</ProductFlavors>
+              <ProductPic src={tasteSample.image} alt={tasteSample.name} />
+              <ProductName>{tasteSample.name}</ProductName>
+              <ProductFlavors>{tasteSample.flavors}</ProductFlavors>
               <ProductPromise>Why You'll Love it</ProductPromise>
-              <ProductDescription>{taste.sample.description}</ProductDescription>
-              <ProductPrice>Price (250g): {taste.sample.price}</ProductPrice>
+              <ProductDescription>{tasteSample.description}</ProductDescription>
+              <ProductPrice>Price (250g): {tasteSample.price}</ProductPrice>
             </ProductCard>
           </ProductWrapper>
         </>
