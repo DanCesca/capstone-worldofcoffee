@@ -2,13 +2,13 @@ import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import SelectButton from '../components/SelectButton';
 
 function Product({ tastes }) {
   const { id, sampleId } = useParams();
   const taste = tastes.find(taste => taste.id === id);
-  console.log(taste);
   const tasteSample = taste.sample.find(sample => sample.id === sampleId);
-  console.log(tasteSample);
 
   return (
     <>
@@ -39,6 +39,24 @@ function Product({ tastes }) {
           </ErrorMessage>
         </>
       )}
+      <OtherPicks role="list">
+        <OtherPicksTitle>Other Picks</OtherPicksTitle>
+        {taste.sample.map(sample =>
+          sample.id === sampleId ? (
+            ''
+          ) : (
+            <OtherPicksContainer>
+              <OtherPickImage src={sample.image} alt={sample.name} />
+              <OtherPickInfo>
+                {sample.name}: {sample.flavors}
+              </OtherPickInfo>
+              <StyledLink  onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} to={`/product/${taste.id}/${sample.id}`}>
+                <SelectButton>Select</SelectButton>
+              </StyledLink>
+            </OtherPicksContainer>
+          )
+        )}
+      </OtherPicks>
       <NavBar />
     </>
   );
@@ -61,9 +79,9 @@ const ProductWrapper = styled.ul`
 
 const ProductCard = styled.li`
   display: grid;
-
+  border: 2px solid red;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   padding: 0.8rem;
 `;
 
@@ -73,6 +91,7 @@ const ProductPic = styled.img`
   max-height: 100%;
   grid-column: 1/2;
   grid-row: 1/3;
+  border: 2px solid red;
 `;
 
 const ProductName = styled.p`
@@ -81,12 +100,14 @@ const ProductName = styled.p`
   align-self: end;
   padding: 0.8rem;
   font-weight: bold;
+  border: 2px solid red;
 `;
 
 const ProductFlavors = styled.p`
   grid-column: 2/3;
   grid-row: 2/3;
   align-self: start;
+  border: 2px solid red;
 `;
 
 const ProductPromise = styled.p`
@@ -97,12 +118,14 @@ const ProductPromise = styled.p`
   margin-top: 1rem;
   margin-bottom: 1rem;
   align-self: end;
+  border: 2px solid red;
 `;
 
 const ProductDescription = styled.p`
   grid-column: 1/3;
   grid-row: 4/6;
   align-self: start;
+  border: 2px solid red;
 `;
 
 const ProductPrice = styled.p`
@@ -111,6 +134,7 @@ const ProductPrice = styled.p`
   align-self: start;
   font-weight: bold;
   padding: 1rem;
+  border: 2px solid red;
 `;
 
 const ErrorImage = styled.img`
@@ -122,4 +146,43 @@ const ErrorImage = styled.img`
 
 const ErrorMessage = styled.p`
   padding: 1rem;
+`;
+
+const OtherPicks = styled.ul`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 3rem;
+`;
+
+const OtherPicksTitle = styled.h2`
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+`;
+
+const OtherPicksContainer = styled.li`
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  max-width: 35ch;
+  margin: 1rem;
+  padding: 1rem;
+`;
+
+const OtherPickImage = styled.img`
+  width: 75%;
+`;
+
+const OtherPickInfo = styled.p`
+  font-size: 0.85em;
+  font-weight: bold;
+  margin: 1rem;
+`;
+
+const StyledLink = styled(Link)`
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: inherit;
+  text-decoration: none;
+  display: block;
 `;

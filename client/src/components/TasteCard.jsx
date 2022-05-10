@@ -19,7 +19,10 @@ function TasteCard({ taste }) {
           <SampleText>
             {taste.sample[0].name}: {taste.sample[0].flavors}
           </SampleText>
-          <StyledLink to={`/product/${taste.id}/${taste.sample[0].id}`}>
+          <StyledLink
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            to={`/product/${taste.id}/${taste.sample[0].id}`}
+          >
             <SelectButton>Select</SelectButton>
           </StyledLink>
           <CloseButton style={{ width: '30px' }} onClick={() => setIsSelected(false)}></CloseButton>
@@ -39,7 +42,6 @@ function TasteCard({ taste }) {
 export default TasteCard;
 
 const CardContainer = styled.li`
-  padding: 1.5rem;
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
   max-width: 35ch;
@@ -76,5 +78,5 @@ const StyledLink = styled(Link)`
   margin-bottom: 0.5rem;
   color: inherit;
   text-decoration: none;
-  display:block;
+  display: block;
 `;
