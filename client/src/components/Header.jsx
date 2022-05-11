@@ -10,7 +10,6 @@ export default function Header({title, hasBackButton}) {
       {title ? (<h1>{title}</h1>):("")}
       {hasBackButton ? (<><BackButton style={{ width: '30px', heigth: '30px', margin: '1rem' }} onClick={() => navigate(-1)}></BackButton></>) : ("")
       }
-      
     </HeaderBox>
   );
 }

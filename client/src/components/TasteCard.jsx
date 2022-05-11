@@ -15,11 +15,14 @@ function TasteCard({ taste }) {
           <h2>{taste.name}</h2>
           <p>{taste.profile}</p>
           <p>Your coffee journey could start with:</p>
-          <SampleImage src={taste.sample.image} alt={taste.sample.name} />
+          <SampleImage src={taste.sample[0].image} alt={taste.sample[0].name} />
           <SampleText>
-            {taste.sample.name}: {taste.sample.flavors}
+            {taste.sample[0].name}: {taste.sample[0].flavors}
           </SampleText>
-          <StyledLink to={`/product/${taste.id}`}>
+          <StyledLink
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            to={`/product/${taste.id}/${taste.sample[0].id}`}
+          >
             <SelectButton>Select</SelectButton>
           </StyledLink>
           <CloseButton style={{ width: '30px' }} onClick={() => setIsSelected(false)}></CloseButton>
@@ -39,7 +42,6 @@ function TasteCard({ taste }) {
 export default TasteCard;
 
 const CardContainer = styled.li`
-  padding: 1.5rem;
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
   max-width: 35ch;
@@ -76,5 +78,5 @@ const StyledLink = styled(Link)`
   margin-bottom: 0.5rem;
   color: inherit;
   text-decoration: none;
-  display:block;
+  display: block;
 `;
