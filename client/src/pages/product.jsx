@@ -43,13 +43,13 @@ function Product({ tastes }) {
           </ErrorMessage>
         </>
       )}
-      <OtherPicks role="list">
+      <OtherPicksList role="list">
         <OtherPicksTitle>Other Picks</OtherPicksTitle>
         {taste.sample.map(sample =>
           sample.id === sampleId ? (
             ''
           ) : (
-            <OtherPicksContainer>
+            <OtherPicksItem>
               <OtherPickImage src={sample.image} alt={sample.name} />
               <OtherPickInfo>
                 {sample.name}: {sample.flavors}
@@ -60,10 +60,10 @@ function Product({ tastes }) {
               >
                 <SelectButton>Select</SelectButton>
               </StyledLink>
-            </OtherPicksContainer>
+            </OtherPicksItem>
           )
         )}
-      </OtherPicks>
+      </OtherPicksList>
       <NavBar />
     </>
   );
@@ -146,7 +146,7 @@ const ErrorMessage = styled.p`
   padding: 1rem;
 `;
 
-const OtherPicks = styled.ul`
+const OtherPicksList = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -159,7 +159,7 @@ const OtherPicksTitle = styled.h2`
   margin-bottom: 1rem;
 `;
 
-const OtherPicksContainer = styled.li`
+const OtherPicksItem = styled.li`
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
   max-width: 35ch;

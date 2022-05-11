@@ -1,11 +1,15 @@
 import { render, screen } from '@testing-library/react';
 import TasteCard from './components/TasteCard';
 import App from './App';
-import {BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 describe('App', () => {
-  it('renders three articles with an image, a title and a profile description', () => {
-    render(<Router><App /></Router>);
+  it('renders three cards with an image, a title and a profile description', () => {
+    render(
+      <Router>
+        <App />
+      </Router>
+    );
     const name1 = screen.getByText(/Light Roast/i);
     const image1 = screen.getByAltText(/Light Roast/i);
     const profile1 = screen.getByText(
