@@ -1,24 +1,24 @@
 import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import styled from 'styled-components';
-import { useState } from 'react';
 
+function Cart({ cartItems, onAdd }) {
+  return (
+    <>
+      <Header hasBackButton="true" />
+      <CartTitle>Your Shopping Cart</CartTitle>
+      {cartItems.length === 0 && <div>Your Cart is Empty.</div>}
+      {cartItems.map(item => (
+        <CartListWrapper role="list">
+          <CartItem key={item.id}>
+            {item.name} <button onClick={() => onAdd(item)}>+</button>
+          </CartItem>
+        </CartListWrapper>
+      ))}
 
-
-function Cart () {
-
-return (
-<>
-<Header hasBackButton="true"/>
-<CartTitle>Your Shopping Cart</CartTitle>
-<CartListWrapper>
-<CartItem></CartItem>
-</CartListWrapper>
-<NavBar />
-</>
-
-);
-
+      <NavBar />
+    </>
+  );
 }
 
 export default Cart;
@@ -38,8 +38,6 @@ const CartListWrapper = styled.ul`
 `;
 
 const CartItem = styled.li`
-  box-shadow: var(--box-shadow);
-  border-radius: var(--border-radius);
   max-width: 35ch;
   margin: 1rem;
   padding: 1rem;
