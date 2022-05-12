@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home tastes={tastes} />} />
         <Route path="/product/:id/:sampleId" element={<Product tastes={tastes} />} />
+        <Route path="/cart" element={<Cart tastes={tastes} />} />
       </Routes>
     </AppContainer>
   );
