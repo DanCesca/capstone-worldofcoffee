@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/home';
 import Product from './pages/product';
+import Cart from './pages/cart';
 import styled from 'styled-components';
 import { tastes } from './database.js';
 

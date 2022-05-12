@@ -9,7 +9,7 @@ function Cart () {
 
 return (
 <>
-<Header title="World of Coffee"/>
+<Header hasBackButton="true"/>
 <CartTitle>Your Shopping Cart</CartTitle>
 <CartListWrapper>
 <CartItem></CartItem>
@@ -26,6 +26,7 @@ export default Cart;
 const CartTitle = styled.h2`
   font-size: 1.3rem;
   margin-bottom: 1rem;
+  margin-top: 2rem;
 `;
 
 const CartListWrapper = styled.ul`
