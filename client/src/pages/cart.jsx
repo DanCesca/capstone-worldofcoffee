@@ -145,7 +145,6 @@ const CoffeePriceBox = styled.div`
   grid-template-rows: 1fr;
   margin: 0.2rem;
   padding: 0.5rem;
-  border: 2px solid red;
 `;
 
 const CoffeePriceText = styled.div`
@@ -166,14 +165,12 @@ const ShippingPriceBox = styled.div`
   grid-template-rows: 1fr;
   margin: 0.2rem;
   padding: 0.5rem;
-  border: 2px solid red;
 `;
 
 const ShippingPriceText = styled.div`
   grid-column: 1/2;
   grid-row: 1/2;
   justify-self: start;
-  border: 2px solid red;
 `;
 
 const ShippingPrice = styled.div`

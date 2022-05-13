@@ -29,7 +29,7 @@ function Product({ tastes, onAdd, countCartItems }) {
               </ProductPresentation>
               <ProductPromise>Why You'll Love it</ProductPromise>
               <ProductDescription>{tasteSample.description}</ProductDescription>
-              <ProductPrice>Price (250g): {tasteSample.price}</ProductPrice>
+              <ProductPrice>Price (250g): {tasteSample.price.toFixed(2)} €</ProductPrice>
 
               <SelectButton onClick={() => onAdd(tasteSample)}>Add to Cart</SelectButton>
             </ProductCard>
