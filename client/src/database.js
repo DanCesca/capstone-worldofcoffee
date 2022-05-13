@@ -15,7 +15,7 @@ export const tastes = [
         roast: 'Light',
         description:
           'Our most popular light roasted coffee! The flavor of this coffee is mild and easily approachable. Its fullness hides flavors of orange, green apple and cherry with a discreet acidity.',
-        price: '10,40 €',
+        price: '10,40',
       },
       {
         id: '2',
@@ -25,7 +25,7 @@ export const tastes = [
         roast: 'Light',
         description:
           'Guji Light is a sweet and fruity coffee from the Gabicho Rogicha region in Ethiopia. The flavor is pure, bright and rich with tastes of honey, lime and jasmine.',
-        price: '10,40 €',
+        price: '10,40',
       },
       {
         id: '3',
@@ -35,7 +35,7 @@ export const tastes = [
         roast: 'Light',
         description:
           'A blend of Sidamo rich and sweet beans, bringing out a complex flavor and flowery aroma, and Guatemalan beans, which give this blend its unique flavor of caramel.',
-        price: '10,90 €',
+        price: '10,90',
       },
     ],
   },
@@ -56,7 +56,7 @@ export const tastes = [
         roast: 'Medium',
         description:
           'Peru Tunki is a medium roasted coffee with a rich mouthfeel and nuances of red berries, nuts and chocolate. The coffee comes from Puno in southern Peru from the Cecovasa cooperative, founded by a group of female farmers.',
-        price: '11,90 €',
+        price: '11,90',
       },
       {
         id: '2',
@@ -66,7 +66,7 @@ export const tastes = [
         roast: 'Medium',
         description:
           'Amazonas is a medium roasted coffee with balanced chocolaty and nutty flavors. The organic beans have been produced by a co-operative of 35 coffee producers called JUMAPR from the Amazonas region in Northern Peru.',
-        price: '10,90 €',
+        price: '10,90',
       },
       {
         id: '3',
@@ -76,7 +76,7 @@ export const tastes = [
         roast: 'Medium',
         description:
           'This coffee is a collection of crops from ten smallholders from the Huehuetango region, Guatemala. The blend consisting of varieties such as Bourbon Arabica and Caturra is Washed processed. Drunk as Espresso it reveals a slight fruity acidity.',
-        price: '12,90 €',
+        price: '12,90',
       },
     ],
   },
@@ -97,7 +97,7 @@ export const tastes = [
         roast: 'Dark',
         description:
           'Brazil Santos is a blend of the arabica varieties Mundo Novo, icatu and Acaia. The result of this dark roast is a super soft roastiness with hints of dark chocolate and nuts.',
-        price: '10,90 €',
+        price: '10,90',
       },
       {
         id: '2',
@@ -107,7 +107,7 @@ export const tastes = [
         roast: 'Dark',
         description:
           'Grown at high altitudes in the region between the Andes and the Amazon, following the traditional methods of the Incas, the coffee is harmonious and a combination of rich softness and refined sweetness.',
-        price: '9,90 €',
+        price: '9,90',
       },
       {
         id: '3',
@@ -117,7 +117,7 @@ export const tastes = [
         roast: 'Dark',
         description:
           'This dark roasted coffee captures the fragrant notes of the Mexican soil. It is a very versatile coffee: highly recommended for espresso and moka pot methods, works absolutely fine as a filter coffee too.',
-        price: '8,90 €',
+        price: '8,90',
       },
     ],
   },

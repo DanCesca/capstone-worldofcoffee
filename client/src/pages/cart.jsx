@@ -2,7 +2,7 @@ import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import styled from 'styled-components';
 
-function Cart({ cartItems, onAdd }) {
+function Cart({ cartItems, onAdd, onRemove }) {
   return (
     <>
       <Header hasBackButton="true" />
@@ -11,8 +11,17 @@ function Cart({ cartItems, onAdd }) {
       {cartItems.map(item => (
         <CartListWrapper role="list">
           <CartItem key={item.id}>
-            {item.name} <button onClick={() => onAdd(item)}>+</button>
+            <CartItemPic src={item.image} alt={item.name} />
+            <CartItemText>{item.name}</CartItemText>
+            <CartItemCounter>
+              <PlusButton onClick={() => onAdd(item)}>+</PlusButton>
+              <MinusButton onClick={() => onRemove(item)}>-</MinusButton>
+            </CartItemCounter>
+            <CartItemQuantityAndPrice>
+              {item.qty} x {item.price} €
+            </CartItemQuantityAndPrice>
           </CartItem>
+          <CartItemSeparation />
         </CartListWrapper>
       ))}
 
@@ -33,12 +42,66 @@ const CartListWrapper = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  align-items: center;
   margin-bottom: 1rem;
 `;
 
 const CartItem = styled.li`
-  max-width: 35ch;
-  margin: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  margin: 0.2rem;
   padding: 1rem;
+`;
+
+const CartItemPic = styled.img`
+  object-fit: fill;
+  max-width: 100%;
+  max-height: 100%;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  border: 1px solid #084d2c;
+`;
+
+const CartItemText = styled.p`
+  grid-column: 2/3;
+  grid-row: 1/2;
+  align-self: center;
+  padding: 0.8rem;
+  font-weight: bold;
+  font-size: 0.85rem;
+`;
+
+const CartItemCounter = styled.div`
+  grid-column: 2/3;
+  grid-row: 1/2;
+  align-self: end;
+`;
+
+const CartItemQuantityAndPrice = styled.div`
+  grid-column: 3/4;
+  grid-row: 1/2;
+  align-self: end;
+`;
+
+const CartItemSeparation = styled.hr`
+  border: 1px solid var(--color-green);
+  border-radius: 5px;
+`;
+
+const PlusButton = styled.button`
+  background-color: var(--color-light-gray);
+  border: 1px solid var(--color-black);
+  border-radius: 8px;
+  color: var(--color-black);
+  margin: 0.2rem;
+  padding: 0.2rem;
+`;
+
+const MinusButton = styled.button`
+  background-color: var(--color-light-gray);
+  border: 1px solid var(--color-black);
+  border-radius: 8px;
+  color: var(--color-black);
+  margin: 0.2rem;
+  padding: 0.25rem;
 `;
