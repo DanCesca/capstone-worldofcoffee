@@ -3,6 +3,12 @@ import NavBar from '../components/NavBar';
 import styled from 'styled-components';
 
 function Cart({ cartItems, onAdd, onRemove, onDelete }) {
+  const itemsPrice = cartItems.reduce(
+    (totalPrice, itemPrice) => totalPrice + itemPrice.price * itemPrice.qty,
+    0
+  );
+  const shippingPrice = itemsPrice > 20 ? 0 : 2.99;
+  const totalPrice = itemsPrice + shippingPrice;
   return (
     <>
       <Header hasBackButton="true" />
@@ -19,13 +25,28 @@ function Cart({ cartItems, onAdd, onRemove, onDelete }) {
             </CartItemCounter>
             <DeleteButton onClick={() => onDelete(item)}>x</DeleteButton>
             <CartItemQuantityAndPrice>
-              {item.qty} x {item.price} €
+              {item.qty} x {item.price.toFixed(2)} €
             </CartItemQuantityAndPrice>
           </CartItem>
           <CartItemSeparation />
         </CartListWrapper>
       ))}
-
+      {cartItems.length !== 0 && (
+        <>
+          <CoffeePriceBox>
+            <CoffeePriceText>Coffee Price</CoffeePriceText>
+            <CoffeePrice>{itemsPrice.toFixed(2)} €</CoffeePrice>
+          </CoffeePriceBox>
+          <ShippingPriceBox>
+            <ShippingPriceText>Shipping Price</ShippingPriceText>
+            <ShippingPrice>{shippingPrice.toFixed(2)} €</ShippingPrice>
+          </ShippingPriceBox>
+          <TotalPriceBox>
+            <div>Total Price</div>
+            <div>{totalPrice.toFixed(2)} €</div>
+          </TotalPriceBox>
+        </>
+      )}
       <NavBar />
     </>
   );
@@ -116,4 +137,56 @@ const DeleteButton = styled.button`
   position: absolute;
   width: fit-content;
   right: 1rem;
+`;
+
+const CoffeePriceBox = styled.div`
+  display: grid;
+  grid-template-columns: 2.5fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  margin: 0.2rem;
+  padding: 0.5rem;
+  border: 2px solid red;
+`;
+
+const CoffeePriceText = styled.div`
+  grid-column: 1/2;
+  grid-row: 1/2;
+  justify-self: start;
+`;
+
+const CoffeePrice = styled.div`
+  grid-column: 4/5;
+  grid-row: 1/2;
+  justify-self: end;
+`;
+
+const ShippingPriceBox = styled.div`
+  display: grid;
+  grid-template-columns: 2.5fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  margin: 0.2rem;
+  padding: 0.5rem;
+  border: 2px solid red;
+`;
+
+const ShippingPriceText = styled.div`
+  grid-column: 1/2;
+  grid-row: 1/2;
+  justify-self: start;
+  border: 2px solid red;
+`;
+
+const ShippingPrice = styled.div`
+  grid-column: 4/5;
+  grid-row: 1/2;
+  align-self: end;
+`;
+
+const TotalPriceBox = styled.div`
+  display: grid;
+  font-weight: bold;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  margin: 0.2rem;
+  padding: 1rem;
 `;

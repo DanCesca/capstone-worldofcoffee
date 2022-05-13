@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { ReactComponent as BackButton } from '../icons/back.svg';
 import { NavLink } from 'react-router-dom';
 
-export default function Header({ title, hasBackButton }) {
+export default function Header({ title, hasBackButton, countCartItems }) {
   const navigate = useNavigate();
 
   return (
@@ -22,6 +22,7 @@ export default function Header({ title, hasBackButton }) {
       )}
       <StyledNavLink to="/cart">
         <CartButton style={{ margin: '1.2rem' }} />
+        {countCartItems ? <ItemCountBadge>{countCartItems}</ItemCountBadge> : ''}
       </StyledNavLink>
     </HeaderBox>
   );
@@ -41,4 +42,12 @@ const HeaderBox = styled.header`
 
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
+  position: relative;
+`;
+
+const ItemCountBadge = styled.button`
+  position: absolute;
+  top: 2rem;
+  right: 0.5rem;
+  border: none;
 `;

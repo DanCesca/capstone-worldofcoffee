@@ -5,14 +5,14 @@ import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import SelectButton from '../components/SelectButton';
 
-function Product({ tastes, onAdd }) {
+function Product({ tastes, onAdd, countCartItems }) {
   const { id, sampleId } = useParams();
   const taste = tastes.find(taste => taste.id === id);
   const tasteSample = taste.sample.find(sample => sample.id === sampleId);
 
   return (
     <>
-      <Header hasBackButton="true" />
+      <Header hasBackButton="true" countCartItems={countCartItems}/>
       {taste && tasteSample ? (
         <>
           <PageTitle>

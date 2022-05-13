@@ -3,10 +3,10 @@ import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import styled from 'styled-components';
 
-function Home( {tastes} ) {
+function Home( {tastes, countCartItems} ) {
   return (
     <>
-      <Header title="World of Coffee"/>
+      <Header title="World of Coffee" countCartItems={countCartItems}/>
       <PageTitle>Coffee Roast Levels</PageTitle>
       <CardWrapper role="list">
         {tastes.map(taste => (

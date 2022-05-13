@@ -38,12 +38,14 @@ function App() {
     } else {}
   }
 
+  const countCartItems = cartItems.length;
+
   return (
     <AppContainer>
       <Routes>
-        <Route path="/" element={<Home tastes={tastes} />} />
-        <Route path="/product/:id/:sampleId" element={<Product tastes={tastes} onAdd={onAdd}/>} />
-        <Route path="/cart" element={<Cart tastes={tastes} cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} onDelete={onDelete}/>} />
+        <Route path="/" element={<Home tastes={tastes} countCartItems={countCartItems} />} />
+        <Route path="/product/:id/:sampleId" element={<Product tastes={tastes} countCartItems={countCartItems} onAdd={onAdd}/>} />
+        <Route path="/cart" element={<Cart tastes={tastes} cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} onDelete={onDelete} countCartItems={countCartItems}/>} />
       </Routes>
     </AppContainer>
   );
