@@ -22,12 +22,28 @@ function App() {
     }
   };
 
+  const onRemove = tasteSample => {
+    const exist = cartItems.find(item => item.id === tasteSample.id);
+    if (exist.qty > 1) {
+      setCartItems(
+        cartItems.map(item => (item.id === exist.id ? { ...exist, qty: exist.qty - 1 } : item))
+      );
+    } else {}
+  };
+
+  const onDelete = tasteSample => {
+    const exist = cartItems.find(item => item.id === tasteSample.id);
+    if (exist) {
+      setCartItems(cartItems.filter((item) => item.id !== tasteSample.id))
+    } else {}
+  }
+
   return (
     <AppContainer>
       <Routes>
         <Route path="/" element={<Home tastes={tastes} />} />
         <Route path="/product/:id/:sampleId" element={<Product tastes={tastes} onAdd={onAdd}/>} />
-        <Route path="/cart" element={<Cart tastes={tastes} cartItems={cartItems} onAdd={onAdd}/>} />
+        <Route path="/cart" element={<Cart tastes={tastes} cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} onDelete={onDelete}/>} />
       </Routes>
     </AppContainer>
   );

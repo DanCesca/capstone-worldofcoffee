@@ -2,7 +2,7 @@ import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import styled from 'styled-components';
 
-function Cart({ cartItems, onAdd, onRemove }) {
+function Cart({ cartItems, onAdd, onRemove, onDelete }) {
   return (
     <>
       <Header hasBackButton="true" />
@@ -17,6 +17,7 @@ function Cart({ cartItems, onAdd, onRemove }) {
               <PlusButton onClick={() => onAdd(item)}>+</PlusButton>
               <MinusButton onClick={() => onRemove(item)}>-</MinusButton>
             </CartItemCounter>
+            <DeleteButton onClick={() => onDelete(item)}>x</DeleteButton>
             <CartItemQuantityAndPrice>
               {item.qty} x {item.price} €
             </CartItemQuantityAndPrice>
@@ -104,4 +105,15 @@ const MinusButton = styled.button`
   color: var(--color-black);
   margin: 0.2rem;
   padding: 0.25rem;
+`;
+
+const DeleteButton = styled.button`
+  background-color: var(--color-light-gray);
+  border: 1px solid var(--color-black);
+  color: var(--color-black);
+  margin: 0.2rem;
+  padding: 0.25rem;
+  position: absolute;
+  width: fit-content;
+  right: 1rem;
 `;
