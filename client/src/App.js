@@ -32,7 +32,6 @@ function App() {
           item.id === existingItem.id ? { ...existingItem, qty: existingItem.qty - 1 } : item
         )
       );
-    } else {
     }
   };
 
@@ -40,7 +39,6 @@ function App() {
     const existingItem = cartItems.find(item => item.id === tasteSample.id);
     if (existingItem) {
       setCartItems(cartItems.filter(item => item.id !== tasteSample.id));
-    } else {
     }
   };
 
