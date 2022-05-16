@@ -5,14 +5,14 @@ import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import SelectButton from '../components/SelectButton';
 
-function Product({ tastes }) {
+function Product({ tastes, onAdd, countCartItems }) {
   const { id, sampleId } = useParams();
   const taste = tastes.find(taste => taste.id === id);
   const tasteSample = taste.sample.find(sample => sample.id === sampleId);
 
   return (
     <>
-      <Header hasBackButton="true" />
+      <Header hasBackButton="true" countCartItems={countCartItems}/>
       {taste && tasteSample ? (
         <>
           <PageTitle>
@@ -21,17 +21,17 @@ function Product({ tastes }) {
             Starts Here
           </PageTitle>
           <ProductWrapper role="list">
-            <ProductCard>
+            <ProductCard key={tasteSample.id}>
               <ProductPresentation>
-                {' '}
                 <ProductPic src={tasteSample.image} alt={tasteSample.name} />
                 <ProductName>{tasteSample.name}</ProductName>
                 <ProductFlavors>{tasteSample.flavors}</ProductFlavors>
               </ProductPresentation>
-
               <ProductPromise>Why You'll Love it</ProductPromise>
               <ProductDescription>{tasteSample.description}</ProductDescription>
-              <ProductPrice>Price (250g): {tasteSample.price}</ProductPrice>
+              <ProductPrice>Price (250g): {tasteSample.price.toFixed(2)} €</ProductPrice>
+
+              <SelectButton onClick={() => onAdd(tasteSample)}>Add to Cart</SelectButton>
             </ProductCard>
           </ProductWrapper>
         </>
@@ -49,7 +49,7 @@ function Product({ tastes }) {
           sample.id === sampleId ? (
             ''
           ) : (
-            <OtherPicksItem>
+            <OtherPicksItem key={sample.id}>
               <OtherPickImage src={sample.image} alt={sample.name} />
               <OtherPickInfo>
                 {sample.name}: {sample.flavors}

@@ -8,6 +8,7 @@ const SelectButton = styled.button`
   color: white;
   font-style: italic;
   font-weight: 900;
+  cursor: pointer;
 `;
 
 export default SelectButton;
