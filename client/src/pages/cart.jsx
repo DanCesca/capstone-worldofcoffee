@@ -36,15 +36,11 @@ function Cart({ cartItems, onAdd, onRemove, onDelete }) {
           <CoffeePriceBox>
             <CoffeePriceText>Coffee Price</CoffeePriceText>
             <CoffeePrice>{itemsPrice.toFixed(2)} €</CoffeePrice>
-          </CoffeePriceBox>
-          <ShippingPriceBox>
             <ShippingPriceText>Shipping Price</ShippingPriceText>
             <ShippingPrice>{shippingPrice.toFixed(2)} €</ShippingPrice>
-          </ShippingPriceBox>
-          <TotalPriceBox>
-            <div>Total Price</div>
-            <div>{totalPrice.toFixed(2)} €</div>
-          </TotalPriceBox>
+            <TotalPriceText>Total Price</TotalPriceText>
+            <TotalPrice>{totalPrice.toFixed(2)} €</TotalPrice>
+          </CoffeePriceBox>
         </>
       )}
       <NavBar />
@@ -129,61 +125,63 @@ const MinusButton = styled.button`
 `;
 
 const DeleteButton = styled.button`
-  background-color: var(--color-light-gray);
-  border: 1px solid var(--color-black);
   color: var(--color-black);
   margin: 0.2rem;
   padding: 0.25rem;
   position: absolute;
   width: fit-content;
-  right: 1rem;
+  right: 1.2rem;
 `;
 
 const CoffeePriceBox = styled.div`
   display: grid;
-  grid-template-columns: 2.5fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  margin: 0.2rem;
-  padding: 0.5rem;
+  grid-template-columns: minmax(0, 2.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2.5fr);
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  margin: 1rem;
+  padding: 1rem;
+  row-gap: 1rem;
 `;
 
 const CoffeePriceText = styled.p`
   grid-column: 1/2;
   grid-row: 1/2;
   justify-self: start;
+  overflow: hidden;
 `;
 
 const CoffeePrice = styled.p`
   grid-column: 4/5;
   grid-row: 1/2;
   justify-self: end;
-`;
-
-const ShippingPriceBox = styled.div`
-  display: grid;
-  grid-template-columns: 2.5fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  margin: 0.2rem;
-  padding: 0.5rem;
+  overflow: hidden;
 `;
 
 const ShippingPriceText = styled.p`
   grid-column: 1/2;
-  grid-row: 1/2;
+  grid-row: 2/3;
   justify-self: start;
+  overflow: hidden;
 `;
 
 const ShippingPrice = styled.p`
   grid-column: 4/5;
-  grid-row: 1/2;
-  align-self: end;
+  grid-row: 2/3;
+  justify-self: end;
+  overflow: hidden;
 `;
 
-const TotalPriceBox = styled.div`
-  display: grid;
+const TotalPriceText = styled.p`
   font-weight: bold;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  margin: 0.2rem;
-  padding: 1rem;
+  grid-column: 1/2;
+  grid-row: 3/4;
+  justify-self: start;
+  overflow: hidden;
+`;
+
+const TotalPrice = styled.p`
+  font-weight: bold;
+  grid-column: 4/5;
+  grid-row: 3/4;
+  justify-self: end;
+  overflow: hidden;
 `;
