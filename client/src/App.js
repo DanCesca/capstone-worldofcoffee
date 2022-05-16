@@ -12,10 +12,10 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
 
   const onAdd = tasteSample => {
-    const exist = cartItems.find(item => item.id === tasteSample.id);
-    if (exist) {
+    const existingItem = cartItems.find(item => item.id === tasteSample.id);
+    if (existingItem) {
       setCartItems(
-        cartItems.map(item => (item.id === exist.id ? { ...exist, qty: exist.qty + 1 } : item))
+        cartItems.map(item => (item.id === existingItem.id ? { ...existingItem, qty: existingItem.qty + 1 } : item))
       );
     } else {
       setCartItems([...cartItems, { ...tasteSample, qty: 1 }]);
@@ -23,17 +23,17 @@ function App() {
   };
 
   const onRemove = tasteSample => {
-    const exist = cartItems.find(item => item.id === tasteSample.id);
-    if (exist.qty > 1) {
+    const existingItem = cartItems.find(item => item.id === tasteSample.id);
+    if (existingItem.qty > 1) {
       setCartItems(
-        cartItems.map(item => (item.id === exist.id ? { ...exist, qty: exist.qty - 1 } : item))
+        cartItems.map(item => (item.id === existingItem.id ? { ...existingItem, qty: existingItem.qty - 1 } : item))
       );
     } else {}
   };
 
   const onDelete = tasteSample => {
-    const exist = cartItems.find(item => item.id === tasteSample.id);
-    if (exist) {
+    const existingItem = cartItems.find(item => item.id === tasteSample.id);
+    if (existingItem) {
       setCartItems(cartItems.filter((item) => item.id !== tasteSample.id))
     } else {}
   }

@@ -147,13 +147,13 @@ const CoffeePriceBox = styled.div`
   padding: 0.5rem;
 `;
 
-const CoffeePriceText = styled.div`
+const CoffeePriceText = styled.p`
   grid-column: 1/2;
   grid-row: 1/2;
   justify-self: start;
 `;
 
-const CoffeePrice = styled.div`
+const CoffeePrice = styled.p`
   grid-column: 4/5;
   grid-row: 1/2;
   justify-self: end;
@@ -167,13 +167,13 @@ const ShippingPriceBox = styled.div`
   padding: 0.5rem;
 `;
 
-const ShippingPriceText = styled.div`
+const ShippingPriceText = styled.p`
   grid-column: 1/2;
   grid-row: 1/2;
   justify-self: start;
 `;
 
-const ShippingPrice = styled.div`
+const ShippingPrice = styled.p`
   grid-column: 4/5;
   grid-row: 1/2;
   align-self: end;
