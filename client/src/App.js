@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/home';
 import Product from './pages/product';
 import Cart from './pages/cart';
+import Favourites from './pages/favourites';
 import styled from 'styled-components';
 import { tastes } from './database.js';
 import { useEffect, useState } from 'react';
@@ -9,6 +10,10 @@ import { useEffect, useState } from 'react';
 function App() {
   const [cartItems, setCartItems] = useState(
     () => JSON.parse(localStorage.getItem('cartItems')) || []
+  );
+
+  const [favouriteCoffees, setFavouriteCoffees] = useState(
+    () => JSON.parse(localStorage.getItem('favouriteCoffees')) || []
   );
 
   const onAdd = tasteSample => {
@@ -69,6 +74,7 @@ function App() {
             />
           }
         />
+        <Route path="/favourites" element={<Favourites countCartItems={countCartItems} />} />
       </Routes>
     </AppContainer>
   );
