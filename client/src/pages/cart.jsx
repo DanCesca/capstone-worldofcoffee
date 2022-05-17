@@ -2,7 +2,7 @@ import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import styled from 'styled-components';
 
-function Cart({ cartItems, onAdd, onRemove, onDelete }) {
+function Cart({ cartItems, onAdd, onRemove, onDelete, countCartItems }) {
   const itemsPrice = cartItems.reduce(
     (totalPrice, itemPrice) => totalPrice + itemPrice.price * itemPrice.qty,
     0
@@ -11,12 +11,12 @@ function Cart({ cartItems, onAdd, onRemove, onDelete }) {
   const totalPrice = itemsPrice + shippingPrice;
   return (
     <>
-      <Header hasBackButton="true" />
+      <Header title="World of Coffee" countCartItems={countCartItems} />
       <CartTitle>Your Shopping Cart</CartTitle>
       {cartItems.length === 0 && <div>Your Cart is Empty.</div>}
       {cartItems.map(item => (
-        <CartListWrapper role="list">
-          <CartItem key={item.id}>
+        <CartListWrapper role="list" key={item.id}>
+          <CartItem>
             <CartItemPic src={item.image} alt={item.name} />
             <CartItemText>{item.name}</CartItemText>
             <CartItemCounter>

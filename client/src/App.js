@@ -50,22 +50,46 @@ function App() {
   const countCartItems = cartItems.length;
 
   function toggleFavouriteCoffee(tasteSample) {
-    if(favouriteCoffees.includes(tasteSample)) {
-     const updateFavouriteCoffees = favouriteCoffees.filter((favouriteCoffee) => favouriteCoffee !== tasteSample)
-     setFavouriteCoffees(
-       updateFavouriteCoffees
-     )
-   } else {
-     setFavouriteCoffees([...favouriteCoffees, tasteSample])
-   }
- }
+    if (favouriteCoffees.includes(tasteSample)) {
+      const updateFavouriteCoffees = favouriteCoffees.filter(
+        favouriteCoffee => favouriteCoffee !== tasteSample
+      );
+      setFavouriteCoffees(updateFavouriteCoffees);
+    } else {
+      setFavouriteCoffees([...favouriteCoffees, tasteSample]);
+    }
+  }
+
+  const deleteFavouriteCoffee = favouriteCoffee => {
+    const existingItem = favouriteCoffees.find(
+      tasteSample => tasteSample.id === favouriteCoffee.id
+    );
+    if (existingItem) {
+      setFavouriteCoffees(
+        favouriteCoffees.filter(tasteSample => tasteSample.id !== favouriteCoffee.id)
+      );
+    }
+  };
+
+  const addFavouritetoCart = favouriteCoffee => {
+    const existingItem = cartItems.find(item => item.id === favouriteCoffee.id);
+    if (existingItem) {
+      setCartItems(
+        cartItems.map(item =>
+          item.id === existingItem.id ? { ...existingItem, qty: existingItem.qty + 1 } : item
+        )
+      );
+    } else {
+      setCartItems([...cartItems, { ...favouriteCoffee, qty: 1 }]);
+    }
+  };
 
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
   useEffect(() => {
-    localStorage.setItem('favouriteCoffees', JSON.stringify(favouriteCoffees))
+    localStorage.setItem('favouriteCoffees', JSON.stringify(favouriteCoffees));
   }, [favouriteCoffees]);
 
   return (
@@ -74,7 +98,15 @@ function App() {
         <Route path="/" element={<Home tastes={tastes} countCartItems={countCartItems} />} />
         <Route
           path="/product/:id/:sampleId"
-          element={<Product tastes={tastes} countCartItems={countCartItems} onAdd={onAdd} favouriteCoffees={favouriteCoffees} toggleFavouriteCoffee={toggleFavouriteCoffee}/>}
+          element={
+            <Product
+              tastes={tastes}
+              countCartItems={countCartItems}
+              onAdd={onAdd}
+              favouriteCoffees={favouriteCoffees}
+              toggleFavouriteCoffee={toggleFavouriteCoffee}
+            />
+          }
         />
         <Route
           path="/cart"
@@ -89,7 +121,18 @@ function App() {
             />
           }
         />
-        <Route path="/favourites" element={<Favourites countCartItems={countCartItems} favouriteCoffees={favouriteCoffees} toggleFavouriteCoffee={toggleFavouriteCoffee}/>} />
+        <Route
+          path="/favourites"
+          element={
+            <Favourites
+              countCartItems={countCartItems}
+              favouriteCoffees={favouriteCoffees}
+              toggleFavouriteCoffee={toggleFavouriteCoffee}
+              addFavouritetoCart={addFavouritetoCart}
+              deleteFavouriteCoffee={deleteFavouriteCoffee}
+            />
+          }
+        />
       </Routes>
     </AppContainer>
   );
