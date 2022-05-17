@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as Home } from '../icons/home.svg';
+import { ReactComponent as Fav } from '../icons/heart.svg';
 import styled from 'styled-components';
 
 const NavBar = () => {
@@ -8,6 +9,9 @@ const NavBar = () => {
       <NavList role="list">
         <StyledNavLink to="/">
           <Home style={{ width: '30px', heigth: '30px' }} />
+        </StyledNavLink>
+        <StyledNavLink to="/favourites">
+          <Fav style={{ width: '30px', heigth: '30px' }} />
         </StyledNavLink>
       </NavList>
     </NavWrapper>
@@ -30,7 +34,9 @@ const NavWrapper = styled.nav`
 const NavList = styled.ul`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
   list-style-type: none;
 `;
 
