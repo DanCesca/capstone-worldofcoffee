@@ -49,9 +49,24 @@ function App() {
 
   const countCartItems = cartItems.length;
 
+  function toggleFavouriteCoffee(tasteSample) {
+    if(favouriteCoffees.includes(tasteSample)) {
+     const updateFavouriteCoffees = favouriteCoffees.filter((favouriteCoffee) => favouriteCoffee !== tasteSample)
+     setFavouriteCoffees(
+       updateFavouriteCoffees
+     )
+   } else {
+     setFavouriteCoffees([...favouriteCoffees, tasteSample])
+   }
+ }
+
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
+
+  useEffect(() => {
+    localStorage.setItem('favouriteCoffees', JSON.stringify(favouriteCoffees))
+  }, [favouriteCoffees]);
 
   return (
     <AppContainer>
@@ -59,7 +74,7 @@ function App() {
         <Route path="/" element={<Home tastes={tastes} countCartItems={countCartItems} />} />
         <Route
           path="/product/:id/:sampleId"
-          element={<Product tastes={tastes} countCartItems={countCartItems} onAdd={onAdd} />}
+          element={<Product tastes={tastes} countCartItems={countCartItems} onAdd={onAdd} favouriteCoffees={favouriteCoffees} toggleFavouriteCoffee={toggleFavouriteCoffee}/>}
         />
         <Route
           path="/cart"
@@ -74,7 +89,7 @@ function App() {
             />
           }
         />
-        <Route path="/favourites" element={<Favourites countCartItems={countCartItems} />} />
+        <Route path="/favourites" element={<Favourites countCartItems={countCartItems} favouriteCoffees={favouriteCoffees} toggleFavouriteCoffee={toggleFavouriteCoffee}/>} />
       </Routes>
     </AppContainer>
   );
