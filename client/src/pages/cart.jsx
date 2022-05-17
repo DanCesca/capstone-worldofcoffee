@@ -33,14 +33,20 @@ function Cart({ cartItems, onAdd, onRemove, onDelete }) {
       ))}
       {cartItems.length !== 0 && (
         <>
-          <CoffeePriceBox>
-            <CoffeePriceText>Coffee Price</CoffeePriceText>
-            <CoffeePrice>{itemsPrice.toFixed(2)} €</CoffeePrice>
-            <ShippingPriceText>Shipping Price</ShippingPriceText>
-            <ShippingPrice>{shippingPrice.toFixed(2)} €</ShippingPrice>
-            <TotalPriceText>Total Price</TotalPriceText>
-            <TotalPrice>{totalPrice.toFixed(2)} €</TotalPrice>
-          </CoffeePriceBox>
+          <TotalAmountBox>
+            <CoffeePriceSection>
+              <p>Coffee Price</p>
+              <p>{itemsPrice.toFixed(2)} €</p>
+            </CoffeePriceSection>
+            <ShippingPriceSection>
+              <p>Shipping Price</p>
+              <p>{shippingPrice.toFixed(2)} €</p>
+            </ShippingPriceSection>
+            <TotalPriceSection>
+              <p>Total Price</p>
+              <p>{totalPrice.toFixed(2)} €</p>
+            </TotalPriceSection>
+          </TotalAmountBox>
         </>
       )}
       <NavBar />
@@ -133,55 +139,33 @@ const DeleteButton = styled.button`
   right: 1.2rem;
 `;
 
-const CoffeePriceBox = styled.div`
-  display: grid;
-  grid-template-columns: minmax(0, 2.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2.5fr);
-  grid-template-rows: repeat(3, minmax(0, 1fr));
+const TotalAmountBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
   margin: 1rem;
   padding: 1rem;
-  row-gap: 1rem;
+  width: 100%;
 `;
 
-const CoffeePriceText = styled.p`
-  grid-column: 1/2;
-  grid-row: 1/2;
-  justify-self: start;
-  overflow: hidden;
+const CoffeePriceSection = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.5rem;
 `;
 
-const CoffeePrice = styled.p`
-  grid-column: 4/5;
-  grid-row: 1/2;
-  justify-self: end;
-  overflow: hidden;
+const ShippingPriceSection = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.5rem;
 `;
 
-const ShippingPriceText = styled.p`
-  grid-column: 1/2;
-  grid-row: 2/3;
-  justify-self: start;
-  overflow: hidden;
-`;
-
-const ShippingPrice = styled.p`
-  grid-column: 4/5;
-  grid-row: 2/3;
-  justify-self: end;
-  overflow: hidden;
-`;
-
-const TotalPriceText = styled.p`
+const TotalPriceSection = styled.div`
+  display: flex;
+  flex-direction: row;
   font-weight: bold;
-  grid-column: 1/2;
-  grid-row: 3/4;
-  justify-self: start;
-  overflow: hidden;
-`;
-
-const TotalPrice = styled.p`
-  font-weight: bold;
-  grid-column: 4/5;
-  grid-row: 3/4;
-  justify-self: end;
-  overflow: hidden;
+  justify-content: space-between;
+  margin: 0.5rem;
 `;
