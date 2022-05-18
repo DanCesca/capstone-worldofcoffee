@@ -33,7 +33,7 @@ function Product({ tastes, onAdd, countCartItems, favouriteCoffees, toggleFavour
               <ProductDescription>{tasteSample.description}</ProductDescription>
               <ProductPrice>Price (250g): {tasteSample.price.toFixed(2)} €</ProductPrice>
 
-              <SelectButton onClick={() => onAdd(tasteSample)}>Add to Cart</SelectButton>
+              <SelectButton onClick={() => {onAdd(tasteSample); alert('Your Item was added to the Shopping Cart')} }>Add to Cart</SelectButton>
               <FavouriteButtonWrapper>
                 {favouriteCoffees.includes(tasteSample) ? (
                   <FavButtonActive onClick={() => toggleFavouriteCoffee(tasteSample)} />
