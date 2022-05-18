@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import SelectButton from '../components/SelectButton';
-import { ReactComponent as FavButton } from '../icons/heart.svg';
+import { ReactComponent as FavButtonActive } from '../icons/heart.svg';
+import { ReactComponent as FavButtonInactive } from '../icons/empty_heart.svg';
 
 function Product({ tastes, onAdd, countCartItems, favouriteCoffees, toggleFavouriteCoffee }) {
   const { id, sampleId } = useParams();
@@ -33,9 +34,13 @@ function Product({ tastes, onAdd, countCartItems, favouriteCoffees, toggleFavour
               <ProductPrice>Price (250g): {tasteSample.price.toFixed(2)} €</ProductPrice>
 
               <SelectButton onClick={() => onAdd(tasteSample)}>Add to Cart</SelectButton>
-              <FavouriteButton onClick={() => toggleFavouriteCoffee(tasteSample)}
-              isFavourite={favouriteCoffees.includes(tasteSample)}>Save
-              </FavouriteButton>
+              <FavouriteButtonWrapper>
+                {favouriteCoffees.includes(tasteSample) ? (
+                  <FavButtonActive onClick={() => toggleFavouriteCoffee(tasteSample)} />
+                ) : (
+                  <FavButtonInactive onClick={() => toggleFavouriteCoffee(tasteSample)} />
+                )}
+              </FavouriteButtonWrapper>
             </ProductCard>
           </ProductWrapper>
         </>
@@ -190,9 +195,8 @@ const StyledLink = styled(Link)`
   display: block;
 `;
 
-const FavouriteButton = styled.button`
-position: absolute;
-right: 10px;
-top: 10px;
-background-color: ${(props) => (props.isFavourite ? 'lightgreen' : '')};
+const FavouriteButtonWrapper = styled.div`
+  position: absolute;
+  right: 10px;
+  top: 10px;
 `;
