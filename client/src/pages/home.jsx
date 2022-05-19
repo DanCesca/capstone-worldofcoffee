@@ -31,5 +31,3 @@ const PageTitle = styled.h2`
   margin-top: 1rem;
   padding: 1rem;
 `;
-
-
