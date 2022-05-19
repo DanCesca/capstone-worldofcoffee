@@ -6,11 +6,18 @@ import { Link } from 'react-router-dom';
 import SelectButton from '../components/SelectButton';
 import { ReactComponent as FavButtonActive } from '../icons/heart.svg';
 import { ReactComponent as FavButtonInactive } from '../icons/empty_heart.svg';
+import { ToastContainer, toast, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 function Product({ tastes, onAdd, countCartItems, favouriteCoffees, toggleFavouriteCoffee }) {
   const { id, sampleId } = useParams();
   const taste = tastes.find(taste => taste.id === id);
   const tasteSample = taste.sample.find(sample => sample.id === sampleId);
+  const notify = () =>
+    toast.success('Your Item was added to the Shopping Cart', {
+      position: toast.POSITION.TOP_CENTER,
+      transition: Slide
+    });
 
   return (
     <>
@@ -32,11 +39,11 @@ function Product({ tastes, onAdd, countCartItems, favouriteCoffees, toggleFavour
               <ProductPromise>Why You'll Love it</ProductPromise>
               <ProductDescription>{tasteSample.description}</ProductDescription>
               <ProductPrice>Price (250g): {tasteSample.price.toFixed(2)} €</ProductPrice>
-
+              <ToastContainer />
               <SelectButton
                 onClick={() => {
                   onAdd(tasteSample);
-                  alert('Your Item was added to the Shopping Cart');
+                  notify();
                 }}
               >
                 Add to Cart
