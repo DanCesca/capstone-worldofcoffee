@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
+
 export default createGlobalStyle`
 
 :root {
@@ -33,7 +34,7 @@ body{
 h1{
     margin: 1rem;
     font-style: italic;
-    font-size: 1.5em;
+    font-size: 1.7em;
 }
 
 input, label, textarea{
