@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import SelectButton from '../components/SelectButton';
 import { ReactComponent as FavButtonActive } from '../icons/heart.svg';
 import { ReactComponent as FavButtonInactive } from '../icons/empty_heart.svg';
-import { ToastContainer, toast, Slide } from 'react-toastify';
+import { toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 function Product({ tastes, onAdd, countCartItems, favouriteCoffees, toggleFavouriteCoffee }) {
@@ -39,7 +39,7 @@ function Product({ tastes, onAdd, countCartItems, favouriteCoffees, toggleFavour
               <ProductPromise>Why You'll Love it</ProductPromise>
               <ProductDescription>{tasteSample.description}</ProductDescription>
               <ProductPrice>Price (250g): {tasteSample.price.toFixed(2)} €</ProductPrice>
-              <ToastContainer />
+    
               <SelectButton
                 onClick={() => {
                   onAdd(tasteSample);

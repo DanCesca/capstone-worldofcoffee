@@ -1,6 +1,8 @@
 import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import styled from 'styled-components';
+import { toast, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 function Favourites({
   countCartItems,
@@ -8,6 +10,12 @@ function Favourites({
   addFavouritetoCart,
   deleteFavouriteCoffee,
 }) {
+  const notify = () =>
+    toast.success('Your Item was added to the Shopping Cart', {
+      position: toast.POSITION.TOP_CENTER,
+      transition: Slide,
+    });
+
   return (
     <>
       <Header title="World of Coffee" countCartItems={countCartItems} />
@@ -23,7 +31,12 @@ function Favourites({
             <DeleteButton onClick={() => deleteFavouriteCoffee(favouriteCoffee)}>x</DeleteButton>
           </CartItem>
           <ButtonWrapper>
-            <SelectButton onClick={() => addFavouritetoCart(favouriteCoffee)}>
+            <SelectButton
+              onClick={() => {
+                addFavouritetoCart(favouriteCoffee);
+                notify();
+              }}
+            >
               Add to Cart
             </SelectButton>
           </ButtonWrapper>

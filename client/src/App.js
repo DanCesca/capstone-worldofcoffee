@@ -6,6 +6,8 @@ import Favourites from './pages/favourites';
 import styled from 'styled-components';
 import { tastes } from './database.js';
 import { useEffect, useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 function App() {
   const [cartItems, setCartItems] = useState(
@@ -94,6 +96,7 @@ function App() {
 
   return (
     <AppContainer>
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Home tastes={tastes} countCartItems={countCartItems} />} />
         <Route
